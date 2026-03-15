@@ -72,6 +72,7 @@
         <option value="idioms_phrases">idioms & phrases</option>
         <option value="history">History</option>
         <option value="polity">Polity</option>
+        <option value="polity_imp">Important art Polity</option>
         <option value="session">congress session</option>
         <option value="report">Report & Ranking</option>
       </select>
@@ -84,256 +85,1039 @@
     </div>
 
     <script>
-      const data = {
-        vocab: [
-          { q: "Acute", a: "Sharp, severe, or intense" },
-          { q: "Acrimony", a: "Bitterness or harshness in speech or behavior" },
-          { q: "Acrid", a: "Sharp or bitter in taste or smell" },
-          { q: "Exacerbate", a: "To make a problem worse" },
-          { q: "Acumen", a: "Sharpness of mind; good judgment" },
-          { q: "Acerbic", a: "Harsh or bitter in tone" },
-          { q: "Amiable", a: "Friendly and pleasant" },
-          { q: "Amicable", a: "Peaceful and without conflict" },
-          { q: "Amorous", a: "Showing love or affection" },
-          { q: "Amity", a: "Friendly relations" },
-          { q: "Ameliorate", a: "To improve something bad" },
-          { q: "Antecedent", a: "Something that comes before" },
-          { q: "Antediluvian", a: "Very old or old-fashioned" },
-          { q: "Anterior", a: "Situated in front" },
-          { q: "Antiquity", a: "Ancient times or old age" },
-          { q: "Anticipate", a: "To expect or predict" },
-          { q: "Philanthropic", a: "Concerned with human welfare" },
-          { q: "Misanthropic", a: "Hating or distrusting humans" },
-          { q: "Anthropology", a: "Study of humans and societies" },
-          { q: "Antidote", a: "A remedy against poison or harm" },
-          { q: "Antipathy", a: "Strong dislike / opposite feeling" },
-          { q: "Anthesis", a: "Period when a flower is fully open" },
-          { q: "Antithesis", a: "Opposite / contrast" },
-          { q: "Antagonism", a: "Active hostility or opposition" },
-          { q: "Belligerent", a: "Aggressive or hostile" },
-          { q: "Bellicose", a: "Inclined to fight; warlike" },
-          { q: "Rebellious", a: "Resisting authority / disobedient" },
-          { q: "Benevolence", a: "Kindness or goodwill" },
-          { q: "Benefit", a: "An advantage or good result" },
-          { q: "Benediction", a: "A blessing" },
-          { q: "Bona fide", a: "Genuine or real" },
-          { q: "Benign", a: "Kind or harmless" },
-          { q: "Cede", a: "To give up or surrender" },
-          { q: "Cease", a: "To stop" },
-          { q: "Cessation", a: "The act of stopping" },
-          { q: "Recede", a: "To move back" },
-          { q: "Exceed", a: "To go beyond" },
-          { q: "Incessant", a: "Never stopping" },
-          { q: "Homicide", a: "Killing of a human" },
-          { q: "Suicide", a: "Killing oneself" },
-          { q: "Patricide", a: "Killing one’s father" },
-          { q: "Fratricide", a: "Killing one’s brother" },
-          { q: "Genocide", a: "Killing of a race or group" },
-          { q: "Sororicide", a: "Killing one’s sister" },
-          { q: "Regicide", a: "Killing of a king" },
-          { q: "Uxoricide", a: "Killing one’s wife" },
-          { q: "Parricide", a: "Killing of a close relative" },
-          { q: "Circumspect", a: "Careful and cautious" },
-          { q: "Circumlocution", a: "Using too many unnecessary words" },
-          { q: "Circumstance", a: "A condition or situation" },
-          { q: "Circumscribe", a: "To restrict or limit" },
-          { q: "Circuitous", a: "Indirect or roundabout" },
-          { q: "Circumnavigate", a: "To travel around" },
-          { q: "Circumvent", a: "To avoid or bypass cleverly" },
-          { q: "Inclination", a: "Natural tendency" },
-          { q: "Incline", a: "To lean or tend toward" },
-          { q: "Proclivity", a: "Strong natural tendency" },
-          { q: "Declivity", a: "A downward slope" },
-          { q: "Recline", a: "To lie back" },
-          { q: "Decline", a: "To decrease or refuse" }
-        ],
+            const data = {
+              vocab: [
+                { q: "Acute", a: "Sharp, severe, or intense" },
+                { q: "Acrimony", a: "Bitterness or harshness in speech or behavior" },
+                { q: "Acrid", a: "Sharp or bitter in taste or smell" },
+                { q: "Exacerbate", a: "To make a problem worse" },
+                { q: "Acumen", a: "Sharpness of mind; good judgment" },
+                { q: "Acerbic", a: "Harsh or bitter in tone" },
+                { q: "Amiable", a: "Friendly and pleasant" },
+                { q: "Amicable", a: "Peaceful and without conflict" },
+                { q: "Amorous", a: "Showing love or affection" },
+                { q: "Amity", a: "Friendly relations" },
+                { q: "Ameliorate", a: "To improve something bad" },
+                { q: "Antecedent", a: "Something that comes before" },
+                { q: "Antediluvian", a: "Very old or old-fashioned" },
+                { q: "Anterior", a: "Situated in front" },
+                { q: "Antiquity", a: "Ancient times or old age" },
+                { q: "Anticipate", a: "To expect or predict" },
+                { q: "Philanthropic", a: "Concerned with human welfare" },
+                { q: "Misanthropic", a: "Hating or distrusting humans" },
+                { q: "Anthropology", a: "Study of humans and societies" },
+                { q: "Antidote", a: "A remedy against poison or harm" },
+                { q: "Antipathy", a: "Strong dislike / opposite feeling" },
+                { q: "Anthesis", a: "Period when a flower is fully open" },
+                { q: "Antithesis", a: "Opposite / contrast" },
+                { q: "Antagonism", a: "Active hostility or opposition" },
+                { q: "Belligerent", a: "Aggressive or hostile" },
+                { q: "Bellicose", a: "Inclined to fight; warlike" },
+                { q: "Rebellious", a: "Resisting authority / disobedient" },
+                { q: "Benevolence", a: "Kindness or goodwill" },
+                { q: "Benefit", a: "An advantage or good result" },
+                { q: "Benediction", a: "A blessing" },
+                { q: "Bona fide", a: "Genuine or real" },
+                { q: "Benign", a: "Kind or harmless" },
+                { q: "Cede", a: "To give up or surrender" },
+                { q: "Cease", a: "To stop" },
+                { q: "Cessation", a: "The act of stopping" },
+                { q: "Recede", a: "To move back" },
+                { q: "Exceed", a: "To go beyond" },
+                { q: "Incessant", a: "Never stopping" },
+                { q: "Homicide", a: "Killing of a human" },
+                { q: "Suicide", a: "Killing oneself" },
+                { q: "Patricide", a: "Killing one’s father" },
+                { q: "Fratricide", a: "Killing one’s brother" },
+                { q: "Genocide", a: "Killing of a race or group" },
+                { q: "Sororicide", a: "Killing one’s sister" },
+                { q: "Regicide", a: "Killing of a king" },
+                { q: "Uxoricide", a: "Killing one’s wife" },
+                { q: "Parricide", a: "Killing of a close relative" },
+                { q: "Circumspect", a: "Careful and cautious" },
+                { q: "Circumlocution", a: "Using too many unnecessary words" },
+                { q: "Circumstance", a: "A condition or situation" },
+                { q: "Circumscribe", a: "To restrict or limit" },
+                { q: "Circuitous", a: "Indirect or roundabout" },
+                { q: "Circumnavigate", a: "To travel around" },
+                { q: "Circumvent", a: "To avoid or bypass cleverly" },
+                { q: "Inclination", a: "Natural tendency" },
+                { q: "Incline", a: "To lean or tend toward" },
+                { q: "Proclivity", a: "Strong natural tendency" },
+                { q: "Declivity", a: "A downward slope" },
+                { q: "Recline", a: "To lie back" },
+                { q: "Decline", a: "To decrease or refuse" },
+              ],
 
-        idioms_phrases: [
-         {q: "Achille’s heel", a: "a weak point"},
-      {q: "Add fuel to fire", a: "to make a bad situation worse"},
-      {q: "An armchair job", a: "an easy job"},
-      {q: "An axe to grind", a: "a selfish motive"},
-      {q: "An iron will", a: "strong determination"},
-      {q: "An old flame", a: "a former lover"},
-      {q: "An old head on young shoulders", a: "a wise young person"},
-      {q: "An olive branch", a: "a sign of peace"},
-      {q: "Apple of discord", a: "cause of quarrel"},
-      {q: "Apple of one’s eye", a: "someone very dear"},
-      {q: "Apple-pie order", a: "neat and well-organized"},
-      {q: "At a loss", a: "confused"},
-      {q: "At a pinch", a: "if necessary"},
-      {q: "At arm’s length", a: "keeping distance"},
-      {q: "At daggers drawn", a: "in open anger"},
-      {q: "At ease", a: "relaxed"},
-      {q: "At one’s fingertips", a: "easily available"},
-      {q: "At one’s wit’s end", a: "completely confused"},
-      {q: "At sixes and sevens", a: "in disorder"},
-      {q: "At stake", a: "at risk"},
-      {q: "At the eleventh hour", a: "at the last moment"},
-      {q: "Backstairs gossip", a: "secret gossip"},
-      {q: "Bad blood", a: "hatred"},
-      {q: "Bag and baggage", a: "with all belongings"},
-      {q: "Baker’s dozen", a: "thirteen"},
-      {q: "Be born with a silver spoon in one’s mouth", a: "born rich"},
-      {q: "Be in the driving seat", a: "in control"},
-      {q: "Bear the brunt of", a: "suffer the main part"},
-      {q: "Beat about the bush", a: "avoid the main point"},
-      {q: "Beat black and blue", a: "beat severely"},
-      {q: "Beat hollow", a: "defeat completely"},
-      {q: "Beck and call", a: "always ready to obey"},
-      {q: "Bed of roses", a: "easy life"},
-      {q: "Bed of thorns", a: "difficult life"},
-      {q: "Beggar description", a: "too extraordinary to describe"},
-      {q: "Bell the cat", a: "face a risky task"},
-      {q: "Between the devil and the deep sea", a: "between two dangers"},
-      {q: "Big gun", a: "important person"},
-      {q: "Bird of passage", a: "person who moves frequently"},
-      {q: "Bird’s-eye view", a: "general view from above"},
-      {q: "Birds of a feather", a: "people of similar type"},
-      {q: "Bite the dust", a: "to fail or die"},
-      {q: "Black sheep", a: "disgraced family member"},
-      {q: "Blind alley", a: "dead end situation"},
-      {q: "Blind date", a: "meeting unknown person"},
-      {q: "Blow one’s own trumpet", a: "boast"},
-      {q: "Blue blood", a: "noble birth"},
-      {q: "Blue book", a: "official government report"},
-        ],
+              idioms_phrases: [
+                { q: "Achille’s heel", a: "a weak point" },
+                { q: "Add fuel to fire", a: "to make a bad situation worse" },
+                { q: "An armchair job", a: "an easy job" },
+                { q: "An axe to grind", a: "a selfish motive" },
+                { q: "An iron will", a: "strong determination" },
+                { q: "An old flame", a: "a former lover" },
+                { q: "An old head on young shoulders", a: "a wise young person" },
+                { q: "An olive branch", a: "a sign of peace" },
+                { q: "Apple of discord", a: "cause of quarrel" },
+                { q: "Apple of one’s eye", a: "someone very dear" },
+                { q: "Apple-pie order", a: "neat and well-organized" },
+                { q: "At a loss", a: "confused" },
+                { q: "At a pinch", a: "if necessary" },
+                { q: "At arm’s length", a: "keeping distance" },
+                { q: "At daggers drawn", a: "in open anger" },
+                { q: "At ease", a: "relaxed" },
+                { q: "At one’s fingertips", a: "easily available" },
+                { q: "At one’s wit’s end", a: "completely confused" },
+                { q: "At sixes and sevens", a: "in disorder" },
+                { q: "At stake", a: "at risk" },
+                { q: "At the eleventh hour", a: "at the last moment" },
+                { q: "Backstairs gossip", a: "secret gossip" },
+                { q: "Bad blood", a: "hatred" },
+                { q: "Bag and baggage", a: "with all belongings" },
+                { q: "Baker’s dozen", a: "thirteen" },
+                { q: "Be born with a silver spoon in one’s mouth", a: "born rich" },
+                { q: "Be in the driving seat", a: "in control" },
+                { q: "Bear the brunt of", a: "suffer the main part" },
+                { q: "Beat about the bush", a: "avoid the main point" },
+                { q: "Beat black and blue", a: "beat severely" },
+                { q: "Beat hollow", a: "defeat completely" },
+                { q: "Beck and call", a: "always ready to obey" },
+                { q: "Bed of roses", a: "easy life" },
+                { q: "Bed of thorns", a: "difficult life" },
+                { q: "Beggar description", a: "too extraordinary to describe" },
+                { q: "Bell the cat", a: "face a risky task" },
+                { q: "Between the devil and the deep sea", a: "between two dangers" },
+                { q: "Big gun", a: "important person" },
+                { q: "Bird of passage", a: "person who moves frequently" },
+                { q: "Bird’s-eye view", a: "general view from above" },
+                { q: "Birds of a feather", a: "people of similar type" },
+                { q: "Bite the dust", a: "to fail or die" },
+                { q: "Black sheep", a: "disgraced family member" },
+                { q: "Blind alley", a: "dead end situation" },
+                { q: "Blind date", a: "meeting unknown person" },
+                { q: "Blow one’s own trumpet", a: "boast" },
+                { q: "Blue blood", a: "noble birth" },
+                { q: "Blue book", a: "official government report" },
+              ],
 
-        history: [
-          { q: "Battle of Plassey was fought in which year?", a: "1757" },
-          { q: "Battle of 1st carnatic was fought in which year?", a: "1744-1748 (treaty of aix-la-chapelle) french won" },
-          { q: "Battle of 2nd carnaticwas fought in which year?", a: "1749-1754 (treaty of pondi) french won duplevs clive" },
-          { q: "Battle of 3rd carnatic was fought in which year?", a: "1756-1763 (treaty of paris) eywr coote won(english) vs comte de lally" },
-          { q: "Battle of buxar was fought in which year?", a: "1764(mir quasim, shuja-ud-daulah, shah alam 2) vs hector munro" },
-          { q: "treaty of alahabad was signed by whom and enedend ?", a: "1765 - clive /  warren hasting eneded(1772)" },
-          { q: "1st anglo mysore war?", a: "1767-69 ( hyder ali won (treaty of madras))" },
-          { q: "2nd anglo mysore war?", a: "1780-84 (hyder ali died of cancer tipu sat on  thrown (treaty of manglore))" },
-          { q: "3rd anglo mysore war?", a: "1790-92 ( treaty of seringaptam)" },
-          { q: "4th anglo mysore war?", a: "1798-99(tipu died)" },
-          { q: "1st anglo sikh war", a: "(1845 treaty of lahore (britishers and maharaja dueep singh)" },
-          { q: "permanent settlement", a: "(1793 bengal and up  and mp ) (cornwillis)" },
-          { q: "ryotwari", a: "south india madras (reed and munro 1820)" },
-          { q: "mahalwari system ", a: "punjab-  william  bentick(1822)" },
-          { q: "mangal panday died", a: "8th april ( fired on 29 march in barrachpore)" },
-          { q: "1857 revolt started ", a: "10 may 1857" },
-          { q: "1857 revolt leader from delhi ", a: "Bhakt khan" },
-          { q: "1857 revolt leader from lucknow ", a: "begum hazrat mahal" },
-          { q: "1857 revolt leader from kanpur", a: "nana saheb/ tantia tope   (nana sahib ran away to nepal )" },
-          { q: "1857 revolt leader from bihar", a: "kunwar singh (landlord)" },
-          { q: "1857 revolt leader from bareilly", a: "khan bahadur khan (rohilla)" },
-          { q: "1857 revolt leader from jhansi ", a: "rani lakshmi bai" },
-          { q: "1857 revolt leader from faizabad", a: "maulvi ahmadullah" },
-          { q: "1857 revolt leader from up", a: "shah mal" },
-          { q: "GOI act 1858 ", a: "queen proclamation, indian strength lowered in aramy, viceroy (1st-canning) created secretary general(15 member)" },
-          { q: " champaran satyagrah", a: "1917" },
-          { q: " ahemdabad mill strike", a: "1918" },
-          { q: "kheda satayagrah ", a: "1918(mg and sardar vallabhai ) 1st non-coperation movement" },
-          { q: "rowlatt satyagrah", a: "1919" },
-          { q: "jallianwala bagh ", a: "13 april 1919" },
-          { q: "non-coperation movement after jlb ", a: "1920" },
-          { q: "chauri-chura ", a: "4 feb 1922" },
-          { q: "all india union congress ", a: "1920" },
-          { q: "hindustan reblican assiosiation ", a: "1924c(ram prasad bismil, j.c chatterjee, sachin sanyal)" },
-          { q: "kakori", a: "1925" },
-          { q: "Hra to Hsra ", a: "1928" },
-          { q: "simon commission ", a: "1928" },
-          { q: " nehru report", a: "1928(madras session) (demand for dominion state)" },
-          { q: "1st round table conference", a: "1930" },
-          { q: "2nd round table conference", a: "1931 (only rtc attended by gandhi and congress)" },
-          { q: "3rd round table conference", a: "1932" },
-          { q: "Who introduced the Doctrine of Lapse?", a: "Lord Dalhousie" }
-        ],
+              history: [
+                { q: "Battle of Plassey was fought in which year?", a: "1757" },
+                {
+                  q: "Battle of 1st carnatic was fought in which year?",
+                  a: "1744-1748 (treaty of aix-la-chapelle) french won",
+                },
+                {
+                  q: "Battle of 2nd carnaticwas fought in which year?",
+                  a: "1749-1754 (treaty of pondi) french won duplevs clive",
+                },
+                {
+                  q: "Battle of 3rd carnatic was fought in which year?",
+                  a: "1756-1763 (treaty of paris) eywr coote won(english) vs comte de lally",
+                },
+                {
+                  q: "Battle of buxar was fought in which year?",
+                  a: "1764(mir quasim, shuja-ud-daulah, shah alam 2) vs hector munro",
+                },
+                {
+                  q: "treaty of alahabad was signed by whom and enedend ?",
+                  a: "1765 - clive /  warren hasting eneded(1772)",
+                },
+                {
+                  q: "1st anglo mysore war?",
+                  a: "1767-69 ( hyder ali won (treaty of madras))",
+                },
+                {
+                  q: "2nd anglo mysore war?",
+                  a: "1780-84 (hyder ali died of cancer tipu sat on  thrown (treaty of manglore))",
+                },
+                { q: "3rd anglo mysore war?", a: "1790-92 ( treaty of seringaptam)" },
+                { q: "4th anglo mysore war?", a: "1798-99(tipu died)" },
+                {
+                  q: "1st anglo sikh war",
+                  a: "(1845 treaty of lahore (britishers and maharaja dueep singh)",
+                },
+                {
+                  q: "permanent settlement",
+                  a: "(1793 bengal and up  and mp ) (cornwillis)",
+                },
+                { q: "ryotwari", a: "south india madras (reed and munro 1820)" },
+                { q: "mahalwari system ", a: "punjab-  william  bentick(1822)" },
+                {
+                  q: "mangal panday died",
+                  a: "8th april ( fired on 29 march in barrachpore)",
+                },
+                { q: "1857 revolt started ", a: "10 may 1857" },
+                { q: "1857 revolt leader from delhi ", a: "Bhakt khan" },
+                { q: "1857 revolt leader from lucknow ", a: "begum hazrat mahal" },
+                {
+                  q: "1857 revolt leader from kanpur",
+                  a: "nana saheb/ tantia tope   (nana sahib ran away to nepal )",
+                },
+                { q: "1857 revolt leader from bihar", a: "kunwar singh (landlord)" },
+                {
+                  q: "1857 revolt leader from bareilly",
+                  a: "khan bahadur khan (rohilla)",
+                },
+                { q: "1857 revolt leader from jhansi ", a: "rani lakshmi bai" },
+                { q: "1857 revolt leader from faizabad", a: "maulvi ahmadullah" },
+                { q: "1857 revolt leader from up", a: "shah mal" },
+                {
+                  q: "GOI act 1858 ",
+                  a: "queen proclamation, indian strength lowered in aramy, viceroy (1st-canning) created secretary general(15 member)",
+                },
+                { q: " champaran satyagrah", a: "1917" },
+                { q: " ahemdabad mill strike", a: "1918" },
+                {
+                  q: "kheda satayagrah ",
+                  a: "1918(mg and sardar vallabhai ) 1st non-coperation movement",
+                },
+                { q: "rowlatt satyagrah", a: "1919" },
+                { q: "jallianwala bagh ", a: "13 april 1919" },
+                { q: "non-coperation movement after jlb ", a: "1920" },
+                { q: "chauri-chura ", a: "4 feb 1922" },
+                { q: "all india union congress ", a: "1920" },
+                {
+                  q: "hindustan reblican assiosiation ",
+                  a: "1924c(ram prasad bismil, j.c chatterjee, sachin sanyal)",
+                },
+                { q: "kakori", a: "1925" },
+                { q: "Hra to Hsra ", a: "1928" },
+                { q: "simon commission ", a: "1928" },
+                {
+                  q: " nehru report",
+                  a: "1928(madras session) (demand for dominion state)",
+                },
+                { q: "1st round table conference", a: "1930" },
+                {
+                  q: "2nd round table conference",
+                  a: "1931 (only rtc attended by gandhi and congress)",
+                },
+                { q: "3rd round table conference", a: "1932" },
+                { q: "Who introduced the Doctrine of Lapse?", a: "Lord Dalhousie" },
+              ],
 
-        session: [
-          {q: "1885", a: "w.c Banerjee (bombay)"},
-          {q: "1886", a: "dadabhai naoroji (calcutta)"},
-          {q: "1887", a: "badruddin tyabji (madras)"},
-          {q: "1888", a: "george yule (allahabad)"},
-          {q: "1896", a: "vande mataram (calcutta)"},
-          {q: "1905", a: " gopal krishna gokhle(vanarasi)"},
-          {q: "1906", a: "dadabhai naoroji (calcutta) (swarajm swadeshi,boycott and national education)"},
-          {q: "1907", a: "congress split, RB Ghosh (surat)"},
-          {q: "1911", a: "jana gana mana (calcutta)"},
-          {q: "1916", a: "ambika charan mazumdar (lucknow)"},
-          {q: "1917", a: "annie besent (calcutta)"},
-          {q: "1924", a: "mahatma gandhi (karnataka)"},
-          {q: "1925", a: "sarojini naidu (kanpur)"},
-          {q: "1929", a: "J.L. nehru (lahore) (purna swaraj)"},
-          {q: "1932", a: "sardar patel (karachi)"},
+              session: [
+                { q: "1885", a: "w.c Banerjee (bombay)" },
+                { q: "1886", a: "dadabhai naoroji (calcutta)" },
+                { q: "1887", a: "badruddin tyabji (madras)" },
+                { q: "1888", a: "george yule (allahabad)" },
+                { q: "1896", a: "vande mataram (calcutta)" },
+                { q: "1905", a: " gopal krishna gokhle(vanarasi)" },
+                {
+                  q: "1906",
+                  a: "dadabhai naoroji (calcutta) (swarajm swadeshi,boycott and national education)",
+                },
+                { q: "1907", a: "congress split, RB Ghosh (surat)" },
+                { q: "1911", a: "jana gana mana (calcutta)" },
+                { q: "1916", a: "ambika charan mazumdar (lucknow)" },
+                { q: "1917", a: "annie besent (calcutta)" },
+                { q: "1924", a: "mahatma gandhi (karnataka)" },
+                { q: "1925", a: "sarojini naidu (kanpur)" },
+                { q: "1929", a: "J.L. nehru (lahore) (purna swaraj)" },
+                { q: "1932", a: "sardar patel (karachi)" },
+              ],
 
-        ],
+              polity: [
+                { q: "art -1", a: "india is a union of states" },
+      { q: "art -2", a: "admission or establishment of new states" },
+      { q: "art -3", a: "formation of new states and alteration of areas boundaries or names" },
+      { q: "art -4", a: "laws relating to article 2 and 3" },
 
-        polity: [
-          { q: "Article 21 deals with which right?", a: "Right to Life and Personal Liberty" },
-          { q: "Who is the head of the State in India?", a: "The President" },
-          { q: "Minimum age to become PM of India?", a: "25 years" }
-        ],
+      { q: "art -5", a: "citizenship at commencement of constitution" },
+      { q: "art -6", a: "citizenship of persons migrated from pakistan" },
+      { q: "art -7", a: "citizenship of migrants to pakistan returning to india" },
+      { q: "art -8", a: "citizenship of persons of indian origin abroad" },
+      { q: "art -9", a: "voluntary acquisition of foreign citizenship" },
+      { q: "art -10", a: "continuance of citizenship rights" },
+      { q: "art -11", a: "parliament power to regulate citizenship" },
 
-        report: [
-          {q: "world competitiveness index 2025", a: "switzerland, 41, IMD"},
-          {q: "world happiness report 2025", a: "finland , 118"},
-          {q: "corruption preception index 2024", a: "denmark , 96 , transparency International"},
-          {q: "climate change performance 2026", a: "denmark, 23/63"},
-          {q: "global peace index 2025", a: "iceland , 115 , Institute for economics and peace"},
-          {q: "world press freedom 2025", a: "norway , 151 , Reporters without borders"},
-          {q: "human development report 2025", a: "iceland , 130 , United Nations Development Programme"},
-          {q: "global firepower 2025", a: "Usa , 4th , Global firepower"},
-          {q: "henley passpoert index 2026", a: "singapore , 75 , Henley & patners"},
-          {q: "global terrorism 2025", a: "burkina faso, 14 , Institute for economics & peace"},
-          {q: "global innovation index 2025", a: "switzerland , 38/139 , World Intellectual Property Organization"},
-          {q: "gloabl livability 2025", a: "copenhagen, 141(delhi and mumbai) , Economist Intelligence Unit"},
-          {q: "index of economic freedom", a: "singapore , 128 , Heritage Foundation"},
-          {q: "Un sustainable development report 2025", a: "finland , 99 , UN Sustainable development solution network "},
-          {q: "global gender gap", a: "iceland, 131 m World Economic Forum "},
-          {q: "global hunger index", a: "somalia , 102 , Concern world wide & welthungerlife"},
-          {q: "AI preparedness", a: "singapore , 72 , International Monetary fund"},
-          {q: "global energy transition", a: "sweden , 71 , World Economic Forum"},
-          {q: "environmental performance index 2024", a: "estonia , 176 "},
-          {q: "network readiness index 2025", a: "US , 45 , Portulans Institute"},
-          {q: "logistics performance", a: "Singapore , 38 , world bank"},
-          {q: "Qs world ranking 2026", a: "Massachusetts institute of tech (MIT), IIT Delhi 23 , Quacquarelli symonds"},
+      { q: "art -12", a: "definition of state" },
+      { q: "art -13", a: "laws inconsistent with fundamental rights void" },
 
+      { q: "art -14", a: "equality before law" },
+      { q: "art -15", a: "prohibition of discrimination" },
+      { q: "art -16", a: "equality of opportunity in public employment" },
+      { q: "art -17", a: "abolition of untouchability" },
+      { q: "art -18", a: "abolition of titles" },
 
-        ]
-      };
+      { q: "art -19", a: "six freedoms" },
+      { q: "art -20", a: "protection in conviction for offences" },
+      { q: "art -21", a: "protection of life and personal liberty" },
+      { q: "art -21A", a: "right to education" },
+      { q: "art -22", a: "protection against arrest and detention" },
 
-      let currentList = [];
-      let index = 0;
+      { q: "art -23", a: "prohibition of human trafficking and forced labour" },
+      { q: "art -24", a: "prohibition of child labour" },
 
-      function shuffle(arr) {
-        for (let i = arr.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-        return arr;
-      }
+      { q: "art -25", a: "freedom of conscience and religion" },
+      { q: "art -26", a: "manage religious affairs" },
+      { q: "art -27", a: "freedom from tax for promotion of religion" },
+      { q: "art -28", a: "religious instruction in institutions" },
 
-      function startSession() {
-        const section = document.getElementById("section").value;
-        currentList = shuffle([...data[section]]);
-        index = 0;
-        nextQuestion();
-      }
+      { q: "art -29", a: "protection of interests of minorities" },
+      { q: "art -30", a: "minorities establish educational institutions" },
 
-      function nextQuestion() {
-        if (index >= currentList.length) {
-          document.getElementById("question").innerText = "Section completed 🎉";
-          document.getElementById("answer").innerText = "Change section or restart";
-          document.getElementById("answer").style.display = "block";
-          return;
-        }
+      { q: "art -32", a: "constitutional remedies" },
+      { q: "art -33", a: "parliament modify rights for armed forces" },
+      { q: "art -34", a: "restriction of rights during martial law" },
+      { q: "art -35", a: "legislation for fundamental rights" },
 
-        document.getElementById("question").innerText = currentList[index].q;
-        document.getElementById("answer").innerText = currentList[index].a;
-        document.getElementById("answer").style.display = "none";
-        index++;
-      }
+      { q: "art -36", a: "definition for directive principles" },
+      { q: "art -37", a: "directive principles not enforceable by court" },
+      { q: "art -38", a: "state promote welfare of people" },
+      { q: "art -39", a: "principles of policy for state" },
+      { q: "art -39A", a: "equal justice and free legal aid" },
+      { q: "art -40", a: "organization of village panchayats" },
+      { q: "art -41", a: "right to work education public assistance" },
+      { q: "art -42", a: "just humane work conditions maternity relief" },
+      { q: "art -43", a: "living wage for workers" },
+      { q: "art -43A", a: "workers participation in management" },
+      { q: "art -44", a: "uniform civil code" },
+      { q: "art -45", a: "early childhood care education" },
+      { q: "art -46", a: "promotion of sc st interests" },
+      { q: "art -47", a: "duty of state to raise nutrition health" },
+      { q: "art -48", a: "organization of agriculture animal husbandry" },
+      { q: "art -48A", a: "protection of environment forests wildlife" },
+      { q: "art -49", a: "protection of monuments" },
+      { q: "art -50", a: "separation of judiciary from executive" },
+      { q: "art -51", a: "promotion of international peace" },
 
-      function showAnswer() {
-        document.getElementById("answer").style.display = "block";
-      }
+      { q: "art -52", a: "president of india" },
+      { q: "art -53", a: "executive power of union" },
+      { q: "art -54", a: "election of president" },
+      { q: "art -55", a: "manner of election of president" },
+      { q: "art -56", a: "term of president" },
+      { q: "art -57", a: "eligibility for re election" },
+      { q: "art -58", a: "qualifications for president" },
+      { q: "art -59", a: "conditions of office of president" },
+      { q: "art -60", a: "oath of president" },
+      { q: "art -61", a: "impeachment of president" },
+      { q: "art -62", a: "time of election to fill vacancy" },
+      { q: "art -63", a: "vice president of india" },
+      { q: "art -64", a: "vice president chairman of rajya sabha" },
+      { q: "art -65", a: "vice president act as president" },
+      { q: "art -66", a: "election of vice president" },
+      { q: "art -67", a: "term of vice president" },
+      { q: "art -68", a: "time of election vice president" },
+      { q: "art -69", a: "oath of vice president" },
+      { q: "art -70", a: "discharge of presidents functions" },
+      { q: "art -71", a: "matters relating to election disputes" },
 
-      startSession();
+      { q: "art -72", a: "power of president to grant pardons" },
+      { q: "art -73", a: "extent of executive power of union" },
+      { q: "art -74", a: "council of ministers to aid president" },
+      { q: "art -75", a: "other provisions about ministers" },
+      { q: "art -76", a: "attorney general for india" },
+      { q: "art -77", a: "conduct of government business" },
+      { q: "art -78", a: "duties of prime minister" },
+
+      { q: "art -79", a: "constitution of parliament" },
+      { q: "art -80", a: "composition of rajya sabha" },
+      { q: "art -81", a: "composition of lok sabha" },
+      { q: "art -82", a: "readjustment after census" },
+      { q: "art -83", a: "duration of houses of parliament" },
+      { q: "art -84", a: "qualification for membership" },
+      { q: "art -85", a: "sessions prorogation dissolution" },
+      { q: "art -86", a: "president address parliament" },
+      { q: "art -87", a: "special address of president" },
+      { q: "art -88", a: "rights of ministers and attorney general in parliament" },
+
+      { q: "art -89", a: "chairman and deputy chairman of rajya sabha" },
+      { q: "art -90", a: "vacation resignation removal" },
+      { q: "art -91", a: "power of deputy chairman" },
+      { q: "art -92", a: "chairman not preside during removal motion" },
+
+      { q: "art -93", a: "speaker and deputy speaker lok sabha" },
+      { q: "art -94", a: "vacation resignation removal speaker" },
+      { q: "art -95", a: "power of deputy speaker" },
+      { q: "art -96", a: "speaker not preside during removal motion" },
+
+      { q: "art -97", a: "salaries of presiding officers" },
+      { q: "art -98", a: "secretariat of parliament" },
+      { q: "art -99", a: "oath of members" },
+      { q: "art -100", a: "voting in houses" },
+
+      { q: "art -101", a: "vacation of seats" },
+      { q: "art -102", a: "disqualification for membership" },
+      { q: "art -103", a: "decision on disqualification" },
+      { q: "art -104", a: "penalty for sitting when disqualified" },
+
+      { q: "art -105", a: "powers privileges of parliament" },
+      { q: "art -106", a: "salaries allowances of members" },
+
+      { q: "art -107", a: "introduction passing of bills" },
+      { q: "art -108", a: "joint sitting of parliament" },
+      { q: "art -109", a: "special procedure money bills" },
+      { q: "art -110", a: "definition of money bill" },
+      { q: "art -111", a: "assent to bills" },
+
+      { q: "art -112", a: "annual financial statement budget" },
+      { q: "art -113", a: "procedure in estimates" },
+      { q: "art -114", a: "appropriation bills" },
+      { q: "art -115", a: "supplementary grants" },
+      { q: "art -116", a: "vote on account credit exceptional grants" },
+      { q: "art -117", a: "special financial bills" },
+
+      { q: "art -118", a: "rules of procedure" },
+      { q: "art -119", a: "regulation of financial procedure" },
+      { q: "art -120", a: "language in parliament" },
+      { q: "art -121", a: "restriction on discussion of judges conduct" },
+      { q: "art -122", a: "courts not inquire parliamentary proceedings" },
+
+      { q: "art -123", a: "power of president to promulgate ordinances" },
+
+      { q: "art -124", a: "establishment and constitution of supreme court" },
+      { q: "art -125", a: "salaries of judges of supreme court" },
+      { q: "art -126", a: "appointment of acting chief justice" },
+      { q: "art -127", a: "appointment of ad hoc judges" },
+      { q: "art -128", a: "attendance of retired judges at supreme court" },
+      { q: "art -129", a: "supreme court to be a court of record" },
+      { q: "art -130", a: "seat of supreme court" },
+      { q: "art -131", a: "original jurisdiction of supreme court" },
+      { q: "art -132", a: "appellate jurisdiction constitutional cases" },
+      { q: "art -133", a: "appellate jurisdiction civil cases" },
+      { q: "art -134", a: "appellate jurisdiction criminal cases" },
+      { q: "art -134A", a: "certificate for appeal to supreme court" },
+      { q: "art -135", a: "jurisdiction of federal court to supreme court" },
+      { q: "art -136", a: "special leave to appeal by supreme court" },
+      { q: "art -137", a: "review of judgments of supreme court" },
+      { q: "art -138", a: "enlargement of jurisdiction of supreme court" },
+      { q: "art -139", a: "power to issue certain writs" },
+      { q: "art -139A", a: "transfer of cases to supreme court" },
+      { q: "art -140", a: "ancillary powers of supreme court" },
+      { q: "art -141", a: "law declared by supreme court binding" },
+      { q: "art -142", a: "enforcement of decrees of supreme court" },
+      { q: "art -143", a: "power of president to consult supreme court" },
+      { q: "art -144", a: "civil authorities to act in aid of supreme court" },
+      { q: "art -145", a: "rules of court" },
+      { q: "art -146", a: "officers and servants of supreme court" },
+      { q: "art -147", a: "interpretation of constitution provisions" },
+
+      { q: "art -148", a: "comptroller and auditor general of india" },
+      { q: "art -149", a: "duties and powers of cag" },
+      { q: "art -150", a: "form of accounts of union and states" },
+      { q: "art -151", a: "audit reports of cag" },
+
+      { q: "art -152", a: "definition of state for part vi" },
+      { q: "art -153", a: "governor of states" },
+      { q: "art -154", a: "executive power of state" },
+      { q: "art -155", a: "appointment of governor" },
+      { q: "art -156", a: "term of office of governor" },
+      { q: "art -157", a: "qualifications for governor" },
+      { q: "art -158", a: "conditions of office of governor" },
+      { q: "art -159", a: "oath of governor" },
+      { q: "art -160", a: "discharge of functions of governor" },
+      { q: "art -161", a: "power of governor to grant pardons" },
+      { q: "art -162", a: "extent of executive power of state" },
+
+      { q: "art -163", a: "council of ministers to aid governor" },
+      { q: "art -164", a: "other provisions about ministers" },
+      { q: "art -165", a: "advocate general for state" },
+      { q: "art -166", a: "conduct of business of state government" },
+      { q: "art -167", a: "duties of chief minister" },
+
+      { q: "art -168", a: "constitution of state legislatures" },
+      { q: "art -169", a: "abolition or creation of legislative councils" },
+      { q: "art -170", a: "composition of legislative assemblies" },
+      { q: "art -171", a: "composition of legislative councils" },
+      { q: "art -172", a: "duration of state legislatures" },
+      { q: "art -173", a: "qualification for membership of state legislature" },
+      { q: "art -174", a: "sessions prorogation dissolution" },
+      { q: "art -175", a: "right of governor to address legislature" },
+      { q: "art -176", a: "special address by governor" },
+      { q: "art -177", a: "rights of ministers and advocate general" },
+
+      { q: "art -178", a: "speaker and deputy speaker of legislative assembly" },
+      { q: "art -179", a: "vacation resignation removal speaker" },
+      { q: "art -180", a: "power of deputy speaker" },
+      { q: "art -181", a: "speaker not preside during removal motion" },
+
+      { q: "art -182", a: "chairman and deputy chairman legislative council" },
+      { q: "art -183", a: "vacation resignation removal chairman" },
+      { q: "art -184", a: "power of deputy chairman" },
+      { q: "art -185", a: "chairman not preside during removal motion" },
+
+      { q: "art -186", a: "salaries of presiding officers of state legislature" },
+      { q: "art -187", a: "secretariat of state legislature" },
+      { q: "art -188", a: "oath of members of state legislature" },
+      { q: "art -189", a: "voting in state legislature" },
+
+      { q: "art -190", a: "vacation of seats in state legislature" },
+      { q: "art -191", a: "disqualification for membership" },
+      { q: "art -192", a: "decision on disqualification" },
+      { q: "art -193", a: "penalty for sitting when disqualified" },
+
+      { q: "art -194", a: "powers privileges of state legislature" },
+      { q: "art -195", a: "salaries allowances of members" },
+
+      { q: "art -196", a: "introduction passing of bills in state legislature" },
+      { q: "art -197", a: "restriction on powers of legislative council" },
+      { q: "art -198", a: "special procedure money bills" },
+      { q: "art -199", a: "definition of money bills in state legislature" },
+      { q: "art -200", a: "assent to bills by governor" },
+
+      { q: "art -201", a: "bills reserved for consideration of president" },
+      { q: "art -202", a: "annual financial statement of state" },
+      { q: "art -203", a: "procedure in state legislature estimates" },
+      { q: "art -204", a: "appropriation bills in states" },
+      { q: "art -205", a: "supplementary additional excess grants" },
+      { q: "art -206", a: "vote on account vote of credit exceptional grants" },
+      { q: "art -207", a: "special provisions financial bills" },
+      { q: "art -208", a: "rules of procedure of state legislature" },
+      { q: "art -209", a: "regulation by law of financial procedure" },
+      { q: "art -210", a: "language to be used in state legislature" },
+      { q: "art -211", a: "discussion on conduct of judges restricted" },
+      { q: "art -212", a: "courts not to inquire proceedings of legislature" },
+
+      { q: "art -213", a: "power of governor to promulgate ordinances" },
+
+      { q: "art -214", a: "high courts for states" },
+      { q: "art -215", a: "high court to be a court of record" },
+      { q: "art -216", a: "constitution of high courts" },
+      { q: "art -217", a: "appointment conditions of judges of high court" },
+      { q: "art -218", a: "application of certain provisions relating to supreme court judges" },
+      { q: "art -219", a: "oath of high court judges" },
+      { q: "art -220", a: "restriction on practice after being judge" },
+      { q: "art -221", a: "salaries of high court judges" },
+      { q: "art -222", a: "transfer of high court judges" },
+      { q: "art -223", a: "appointment of acting chief justice" },
+      { q: "art -224", a: "appointment of additional and acting judges" },
+      { q: "art -224A", a: "appointment of retired judges at sittings of high courts" },
+      { q: "art -225", a: "jurisdiction of existing high courts" },
+      { q: "art -226", a: "power of high courts to issue writs" },
+      { q: "art -227", a: "superintendence of high courts over subordinate courts" },
+      { q: "art -228", a: "transfer of certain cases to high court" },
+      { q: "art -229", a: "officers and servants of high courts" },
+      { q: "art -230", a: "extension of jurisdiction of high courts to union territories" },
+      { q: "art -231", a: "establishment of common high court for two or more states" },
+
+      { q: "art -233", a: "appointment of district judges" },
+      { q: "art -234", a: "recruitment of persons other than district judges to judicial service" },
+      { q: "art -235", a: "control over subordinate courts" },
+      { q: "art -236", a: "interpretation judicial service and district judge" },
+      { q: "art -237", a: "application of provisions to certain magistrates" },
+
+      { q: "art -239", a: "administration of union territories" },
+      { q: "art -239A", a: "creation of local legislatures for certain union territories" },
+      { q: "art -239AA", a: "special provisions for delhi" },
+      { q: "art -239AB", a: "provisions in case of failure of constitutional machinery in delhi" },
+      { q: "art -239B", a: "power of administrator to promulgate ordinances" },
+
+      { q: "art -240", a: "power of president to make regulations for certain union territories" },
+      { q: "art -241", a: "high courts for union territories" },
+      { q: "art -242", a: "coorg repealed" },
+
+      { q: "art -243", a: "definitions relating to panchayats" },
+      { q: "art -243A", a: "gram sabha powers" },
+      { q: "art -243B", a: "constitution of panchayats" },
+      { q: "art -243C", a: "composition of panchayats" },
+      { q: "art -243D", a: "reservation of seats" },
+      { q: "art -243E", a: "duration of panchayats" },
+      { q: "art -243F", a: "disqualification for membership" },
+      { q: "art -243G", a: "powers authority responsibilities of panchayats" },
+      { q: "art -243H", a: "powers to impose taxes by panchayats" },
+      { q: "art -243I", a: "constitution of finance commission for panchayats" },
+      { q: "art -243J", a: "audit of accounts of panchayats" },
+      { q: "art -243K", a: "elections to panchayats" },
+      { q: "art -243L", a: "application to union territories" },
+      { q: "art -243M", a: "exceptions to panchayat provisions" },
+      { q: "art -243N", a: "continuance of existing laws" },
+      { q: "art -243O", a: "bar to interference by courts in electoral matters" },
+
+      { q: "art -243P", a: "definitions relating to municipalities" },
+      { q: "art -243Q", a: "constitution of municipalities" },
+      { q: "art -243R", a: "composition of municipalities" },
+      { q: "art -243S", a: "constitution and composition of ward committees" },
+      { q: "art -243T", a: "reservation of seats in municipalities" },
+      { q: "art -243U", a: "duration of municipalities" },
+      { q: "art -243V", a: "disqualification for membership" },
+      { q: "art -243W", a: "powers authority responsibilities of municipalities" },
+      { q: "art -243X", a: "power to impose taxes by municipalities" },
+      { q: "art -243Y", a: "finance commission for municipalities" },
+      { q: "art -243Z", a: "audit of accounts of municipalities" },
+
+      { q: "art -244", a: "administration of scheduled areas and tribal areas" },
+      { q: "art -244A", a: "formation of autonomous state in assam" },
+
+      { q: "art -245", a: "extent of laws made by parliament and state legislatures" },
+      { q: "art -246", a: "subject matter of laws union state concurrent lists" },
+      { q: "art -247", a: "power of parliament to establish additional courts" },
+      { q: "art -248", a: "residuary powers of legislation" },
+      { q: "art -249", a: "power of parliament to legislate on state list in national interest" },
+      { q: "art -250", a: "parliament power during national emergency" },
+      { q: "art -251", a: "inconsistency between union and state laws" },
+      { q: "art -252", a: "power of parliament to legislate for two or more states" },
+      { q: "art -253", a: "legislation for implementing international agreements" },
+      { q: "art -254", a: "inconsistency between union and state laws" },
+      { q: "art -255", a: "requirements of recommendations and sanctions" },
+
+      { q: "art -256", a: "obligation of states and union" },
+      { q: "art -257", a: "control of union over states" },
+      { q: "art -258", a: "power of union to confer powers on states" },
+      { q: "art -258A", a: "power of states to entrust functions to union" },
+
+      { q: "art -263", a: "inter state council" },
+
+      { q: "art -266", a: "consolidated fund contingency fund public accounts" },
+      { q: "art -267", a: "contingency fund" },
+      { q: "art -268", a: "duties levied by union but collected by states" },
+      { q: "art -269", a: "taxes levied collected by union assigned to states" },
+      { q: "art -270", a: "taxes levied and distributed between union and states" },
+      { q: "art -271", a: "surcharge on taxes for union purposes" },
+      { q: "art -272", a: "repealed" },
+      { q: "art -273", a: "grants in lieu of export duty on jute" },
+      { q: "art -274", a: "prior recommendation of president for financial bills" },
+      { q: "art -275", a: "grants from union to states" },
+      { q: "art -276", a: "tax on professions trades callings employments" },
+      { q: "art -277", a: "saving of existing taxes" },
+      { q: "art -278", a: "repealed" },
+      { q: "art -279", a: "calculation of net proceeds of taxes" },
+      { q: "art -280", a: "finance commission" },
+      { q: "art -281", a: "recommendations of finance commission" },
+
+      { q: "art -300A", a: "right to property" },
+
+      { q: "art -312", a: "all india services" },
+
+      { q: "art -315", a: "public service commissions for union and states" },
+      { q: "art -316", a: "appointment of members of public service commission" },
+      { q: "art -317", a: "removal of member of public service commission" },
+      { q: "art -318", a: "power to make regulations for commission" },
+      { q: "art -319", a: "prohibition of holding office after ceasing to be member" },
+      { q: "art -320", a: "functions of public service commissions" },
+      { q: "art -321", a: "power to extend functions of public service commissions" },
+      { q: "art -322", a: "expenses of public service commissions" },
+      { q: "art -323", a: "reports of public service commissions" },
+
+      { q: "art -324", a: "superintendence direction control of elections election commission" },
+
+      { q: "art -330", a: "reservation of seats for sc st in lok sabha" },
+      { q: "art -332", a: "reservation of seats for sc st in state assemblies" },
+      { q: "art -335", a: "claims of sc st in services" },
+
+      { q: "art -343", a: "official language of union" },
+      { q: "art -344", a: "commission on official language" },
+      { q: "art -345", a: "official language of states" },
+
+      { q: "art -352", a: "national emergency" },
+      { q: "art -356", a: "presidents rule in states" },
+      { q: "art -360", a: "financial emergency" },
+
+      { q: "art -368", a: "power of parliament to amend constitution" },
+
+      { q: "art -393", a: "short title of constitution" },
+      { q: "art -394", a: "commencement of constitution" },
+      { q: "art -395", a: "repeal of indian independence act 1947 and government of india act 1935" },
+
+              ],
+
+              polity_imp: [
+                { q: "art -1", a: "India that is Bharat shall be a Union of States. It defines the name and territorial structure of India including states, union territories and acquired territories." },
+
+      { q: "art -2", a: "Parliament has the power to admit new states into the Union of India or establish new states on such terms and conditions as it thinks fit." },
+
+      { q: "art -3", a: "Parliament can form new states, alter boundaries, increase or decrease the area of states or change their names after consulting the concerned state legislature." },
+
+      { q: "art -4", a: "Laws made under Articles 2 and 3 may amend the First and Fourth Schedule. Such laws are not treated as constitutional amendments under Article 368." },
+
+      { q: "art -5", a: "Defines citizenship at the commencement of the Constitution for persons domiciled in India who were born in India or whose parents were born in India or who lived in India for 5 years." },
+
+      { q: "art -6", a: "Provides citizenship rights to persons who migrated to India from Pakistan before the commencement of the Constitution subject to certain conditions." },
+
+      { q: "art -7", a: "Deals with persons who migrated to Pakistan after 1 March 1947 but later returned to India with permission for resettlement." },
+
+      { q: "art -8", a: "Citizenship rights for persons of Indian origin residing outside India who register themselves with Indian diplomatic missions." },
+
+      { q: "art -9", a: "A person who voluntarily acquires the citizenship of another country will not remain a citizen of India." },
+
+      { q: "art -10", a: "Provides that every person who is or is deemed to be a citizen of India shall continue to be a citizen subject to laws made by Parliament." },
+
+      { q: "art -11", a: "Empowers Parliament to make laws regarding acquisition and termination of citizenship such as the Citizenship Act 1955." },
+
+      { q: "art -12", a: "Defines the term State for Fundamental Rights. It includes government, parliament, state legislatures and local authorities." },
+
+      { q: "art -13", a: "Declares that any law violating Fundamental Rights will be void. The state cannot make laws that take away or abridge fundamental rights." },
+
+      { q: "art -14", a: "Guarantees equality before the law and equal protection of the laws for all persons in India." },
+
+      { q: "art -15", a: "Prohibits discrimination by the state on grounds of religion, race, caste, sex or place of birth." },
+
+      { q: "art -16", a: "Ensures equality of opportunity in public employment and allows reservation for backward classes, SCs and STs." },
+
+      { q: "art -17", a: "Abolishes untouchability and makes its practice punishable by law." },
+
+      { q: "art -18", a: "Abolishes titles except military or academic distinctions such as Dr. or Major." },
+
+      { q: "art -19", a: "Provides six freedoms including speech and expression, assembly, association, movement, residence and profession." },
+
+      { q: "art -20", a: "Protection in criminal cases including no retrospective punishment, no double punishment and protection against self incrimination." },
+
+      { q: "art -21", a: "Guarantees protection of life and personal liberty except according to procedure established by law." },
+
+      { q: "art -21A", a: "Provides free and compulsory education for children aged 6–14 years." },
+
+      { q: "art -22", a: "Protection against arbitrary arrest and detention and rights of arrested persons." },
+
+      { q: "art -23", a: "Prohibits trafficking in human beings, forced labour and begar." },
+
+      { q: "art -24", a: "Prohibits employment of children below 14 years in factories, mines and hazardous industries." },
+
+      { q: "art -25", a: "Freedom of conscience and right to freely profess, practice and propagate religion." },
+
+      { q: "art -26", a: "Freedom to manage religious affairs and maintain religious institutions." },
+
+      { q: "art -27", a: "No person can be forced to pay taxes for promotion of any religion." },
+
+      { q: "art -28", a: "Religious instruction is prohibited in government funded educational institutions." },
+
+      { q: "art -29", a: "Protection of cultural and educational rights of minorities." },
+
+      { q: "art -30", a: "Minorities have the right to establish and administer educational institutions." },
+
+      { q: "art -32", a: "Right to constitutional remedies allowing citizens to approach the Supreme Court for enforcement of Fundamental Rights." },
+
+      { q: "art -36", a: "Defines the term State for Directive Principles of State Policy." },
+
+      { q: "art -37", a: "Directive Principles are not enforceable by courts but are fundamental in governance." },
+
+      { q: "art -38", a: "State should promote welfare of people by securing social, economic and political justice." },
+
+      { q: "art -39", a: "Directs the state to ensure adequate livelihood, equal pay and prevention of concentration of wealth." },
+
+      { q: "art -39A", a: "Provides equal justice and free legal aid." },
+
+      { q: "art -40", a: "Directs the state to organize village panchayats." },
+
+      { q: "art -41", a: "Right to work, education and public assistance in certain cases." },
+
+      { q: "art -42", a: "Just and humane working conditions and maternity relief." },
+
+      { q: "art -43", a: "State should ensure living wages and decent standard of life for workers." },
+
+      { q: "art -43A", a: "Participation of workers in management of industries." },
+
+      { q: "art -44", a: "Uniform Civil Code for citizens." },
+
+      { q: "art -45", a: "Early childhood care and education for children below six years." },
+
+      { q: "art -46", a: "Promotion of educational and economic interests of SCs, STs and weaker sections." },
+
+      { q: "art -47", a: "Duty of the state to improve nutrition and public health." },
+
+      { q: "art -48", a: "Organization of agriculture and animal husbandry." },
+
+      { q: "art -48A", a: "Protection and improvement of environment and forests." },
+
+      { q: "art -49", a: "Protection of monuments and places of national importance." },
+
+      { q: "art -50", a: "Separation of judiciary from executive." },
+
+      { q: "art -51", a: "Promotion of international peace and security." },
+
+      { q: "art -51A", a: "Fundamental duties of citizens." },
+
+      { q: "art -52", a: "There shall be a President of India." },
+
+      { q: "art -53", a: "Executive power of the Union is vested in the President." },
+
+      { q: "art -54", a: "Election of the President by an electoral college." },
+
+      { q: "art -55", a: "Manner of election of President ensuring proportional representation." },
+
+      { q: "art -56", a: "Term of President is five years." },
+
+      { q: "art -58", a: "Qualifications required to become President." },
+
+      { q: "art -61", a: "Procedure for impeachment of the President." },
+
+      { q: "art -63", a: "There shall be a Vice President of India." },
+
+      { q: "art -66", a: "Election of Vice President." },
+
+      { q: "art -72", a: "Power of President to grant pardons, reprieves and commutations." },
+
+      { q: "art -74", a: "Council of Ministers with Prime Minister shall aid and advise the President." },
+
+      { q: "art -75", a: "Appointment and responsibilities of Prime Minister and Council of Ministers." },
+
+      { q: "art -76", a: "Attorney General of India." },
+
+      { q: "art -79", a: "Constitution of Parliament consisting of President, Rajya Sabha and Lok Sabha." },
+
+      { q: "art -80", a: "Composition of Rajya Sabha." },
+
+      { q: "art -81", a: "Composition of Lok Sabha." },
+
+      { q: "art -83", a: "Duration of Houses of Parliament." },
+
+      { q: "art -84", a: "Qualifications for membership of Parliament." },
+
+      { q: "art -85", a: "Sessions, prorogation and dissolution of Parliament." },
+
+      { q: "art -93", a: "Speaker and Deputy Speaker of Lok Sabha." },
+
+      { q: "art -100", a: "Voting in the Houses of Parliament." },
+
+      { q: "art -102", a: "Disqualification for membership of Parliament." },
+
+      { q: "art -105", a: "Powers and privileges of Parliament and its members." },
+
+      { q: "art -108", a: "Joint sitting of both Houses of Parliament." },
+
+      { q: "art -109", a: "Special procedure regarding Money Bills." },
+
+      { q: "art -110", a: "Definition of Money Bill." },
+
+      { q: "art -111", a: "Assent of the President to bills passed by Parliament." },
+
+      { q: "art -112", a: "Annual Financial Statement also called the Union Budget." },
+
+      { q: "art -123", a: "President's power to promulgate ordinances when Parliament is not in session." },
+
+      { q: "art -124", a: "Establishment and constitution of the Supreme Court." },
+
+      { q: "art -129", a: "Supreme Court is a court of record." },
+
+      { q: "art -131", a: "Original jurisdiction of Supreme Court in disputes between states or union." },
+
+      { q: "art -136", a: "Special leave to appeal to the Supreme Court." },
+
+      { q: "art -137", a: "Review of judgments of Supreme Court." },
+
+      { q: "art -141", a: "Law declared by Supreme Court is binding on all courts in India." },
+
+      { q: "art -142", a: "Supreme Court can pass orders necessary to do complete justice." },
+
+      { q: "art -143", a: "President can seek advisory opinion of Supreme Court." },
+
+      { q: "art -148", a: "Comptroller and Auditor General of India." },
+
+      { q: "art -153", a: "Governor for each state." },
+
+      { q: "art -155", a: "Governor appointed by President." },
+
+      { q: "art -161", a: "Governor has power to grant pardons." },
+
+      { q: "art -163", a: "Council of Ministers to aid and advise Governor." },
+
+      { q: "art -164", a: "Chief Minister and Council of Ministers of state." },
+
+      { q: "art -168", a: "Constitution of state legislature." },
+
+      { q: "art -170", a: "Composition of state legislative assembly." },
+
+      { q: "art -200", a: "Governor's assent to bills passed by state legislature." },
+
+      { q: "art -213", a: "Governor ordinance making power." },
+
+      { q: "art -214", a: "High Courts for states." },
+
+      { q: "art -217", a: "Appointment and conditions of High Court judges." },
+
+      { q: "art -226", a: "Power of High Courts to issue writs." },
+
+      { q: "art -239", a: "Administration of Union Territories." },
+
+      { q: "art -243", a: "Panchayati Raj system." },
+
+      { q: "art -245", a: "Extent of laws made by Parliament and state legislatures." },
+
+      { q: "art -246", a: "Union, State and Concurrent Lists." },
+
+      { q: "art -263", a: "Inter-State Council." },
+
+      { q: "art -280", a: "Finance Commission." },
+
+      { q: "art -300A", a: "Right to property as a legal right." },
+
+      { q: "art -312", a: "All India Services like IAS, IPS." },
+
+      { q: "art -315", a: "Public Service Commissions for Union and states." },
+
+      { q: "art -324", a: "Election Commission of India." },
+
+      { q: "art -343", a: "Official language of the Union." },
+
+      { q: "art -352", a: "National Emergency." },
+
+      { q: "art -356", a: "President's Rule in states." },
+
+      { q: "art -360", a: "Financial Emergency." },
+
+      { q: "art -368", a: "Procedure for amendment of the Constitution." }],
+
+              report: [
+                { q: "world competitiveness index 2025", a: "switzerland, 41, IMD" },
+                { q: "world happiness report 2025", a: "finland , 118" },
+                {
+                  q: "corruption preception index 2024",
+                  a: "denmark , 96 , transparency International",
+                },
+                { q: "climate change performance 2026", a: "denmark, 23/63" },
+                {
+                  q: "global peace index 2025",
+                  a: "iceland , 115 , Institute for economics and peace",
+                },
+                {
+                  q: "world press freedom 2025",
+                  a: "norway , 151 , Reporters without borders",
+                },
+                {
+                  q: "human development report 2025",
+                  a: "iceland , 130 , United Nations Development Programme",
+                },
+                { q: "global firepower 2025", a: "Usa , 4th , Global firepower" },
+                {
+                  q: "henley passpoert index 2026",
+                  a: "singapore , 75 , Henley & patners",
+                },
+                {
+                  q: "global terrorism 2025",
+                  a: "burkina faso, 14 , Institute for economics & peace",
+                },
+                {
+                  q: "global innovation index 2025",
+                  a: "switzerland , 38/139 , World Intellectual Property Organization",
+                },
+                {
+                  q: "gloabl livability 2025",
+                  a: "copenhagen, 141(delhi and mumbai) , Economist Intelligence Unit",
+                },
+                {
+                  q: "index of economic freedom",
+                  a: "singapore , 128 , Heritage Foundation",
+                },
+                {
+                  q: "Un sustainable development report 2025",
+                  a: "finland , 99 , UN Sustainable development solution network ",
+                },
+                { q: "global gender gap", a: "iceland, 131 m World Economic Forum " },
+                {
+                  q: "global hunger index",
+                  a: "somalia , 102 , Concern world wide & welthungerlife",
+                },
+                {
+                  q: "AI preparedness",
+                  a: "singapore , 72 , International Monetary fund",
+                },
+                {
+                  q: "global energy transition",
+                  a: "sweden , 71 , World Economic Forum",
+                },
+                { q: "environmental performance index 2024", a: "estonia , 176 " },
+                {
+                  q: "network readiness index 2025",
+                  a: "US , 45 , Portulans Institute",
+                },
+                { q: "logistics performance", a: "Singapore , 38 , world bank" },
+                {
+                  q: "Qs world ranking 2026",
+                  a: "Massachusetts institute of tech (MIT), IIT Delhi 23 , Quacquarelli symonds",
+                },
+              ],
+              acts: [
+                {
+                  q: "Regulating Act 1773",
+                  a: "First step by british parliament to control East India company, Created the post of Governor-General of Bengal. , Warren Hastings became the first Governor-General ",
+                },
+                {
+                  q: "Pitts India Act 1784",
+                  a: "British government got direct control over Company administration ,Created Board of Control in Britain.",
+                },
+                {
+                  q: "chartr Act 1813",
+                  a: "company monopoly on trade ( except tea and china), chirstian missionaries, promote english education",
+                },
+                { q: "chartr Act 1833", a: "tried to host indian civil service" },
+                {
+                  q: "goi act 1858",
+                  a: "after 1857 revolt , ended east india company , india came under British crown",
+                },
+                {
+                  q: "indian council act 1861",
+                  a: "indians allowed in legislative councils, beginning of legislative decentralization",
+                },
+                {
+                  q: "indian council act 1892",
+                  a: "increased number of legislative council members, introduced indirect election",
+                },
+                {
+                  q: "goi act 1919",
+                  a: "also called montagu-chelmsford Reform, Introduced Diarchy in provinces , created central and provincial subjects separated",
+                },
+                {
+                  q: "goi Act 1935",
+                  a: "introduced provinicial autonomy, federal systems in india",
+                },
+              ],
+              dams: [
+                { q: "Bhakra Nangal Dam", a: "Sutlej" },
+                { q: "Tehri Dam", a: "Bhagirathi (Highest damn)" },
+                { q: "Hirakud Dam", a: "Mahanadi (longest dam)" },
+                { q: "Sardar Sarovar Dam", a: "Narmada" },
+                { q: "Indira Sagar Dam", a: "Narmada (largest reservoir capacity)" },
+                { q: "Nagarjuna Sagar Dam", a: "Krishna" },
+                { q: "Tungabhadra Dam", a: "Tungabhadra" },
+                { q: "Krishna Raja Sagar Dam", a: "Kaveri" },
+                { q: "Mettur Dam", a: "Kaveri" },
+                { q: "Rihand Dam", a: "Rihand" },
+                { q: "Koyna Dam", a: "Koyna" },
+                { q: "Maithon Dam", a: "Barakar" },
+                { q: "Bhavani Sagar Dam", a: "Bhavani" },
+                { q: "Bisalpur Dam", a: "Banas" },
+                { q: "Cheruthoni Dam", a: "Cheruthoni" },
+                { q: "Ukai Dam", a: "Tapti" },
+                { q: "Gandhi Sagar Dam", a: "Chambal" },
+                { q: "Rana Pratap Sagar Dam", a: "Chambal" },
+                { q: "Jawahar Sagar Dam", a: "Chambal" },
+                { q: "Pong Dam", a: "Beas" },
+                { q: "Idukki Dam", a: "Periyar" },
+                { q: "Srisailam Dam", a: "Krishna" },
+                { q: "Almatti Dam", a: "Krishna" },
+                { q: "Jayakwadi Dam", a: "Godavari" },
+                { q: "Omkareshwar Dam", a: "Narmada" },
+              ],
+            };
+
+            let currentList = [];
+            let index = 0;
+
+            function shuffle(arr) {
+              for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+              }
+              return arr;
+            }
+
+            function startSession() {
+              const section = document.getElementById("section").value;
+              currentList = shuffle([...data[section]]);
+              index = 0;
+              nextQuestion();
+            }
+
+            function nextQuestion() {
+              if (index >= currentList.length) {
+                document.getElementById("question").innerText =
+                  "Section completed 🎉";
+                document.getElementById("answer").innerText =
+                  "Change section or restart";
+                document.getElementById("answer").style.display = "block";
+                return;
+              }
+
+              document.getElementById("question").innerText = currentList[index].q;
+              document.getElementById("answer").innerText = currentList[index].a;
+              document.getElementById("answer").style.display = "none";
+              index++;
+            }
+
+            function showAnswer() {
+              document.getElementById("answer").style.display = "block";
+            }
+
+            startSession();
     </script>
   </body>
 </html>
